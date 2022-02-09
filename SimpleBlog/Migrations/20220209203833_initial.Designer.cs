@@ -10,15 +10,15 @@ using SimpleBlog.Models;
 namespace SimpleBlog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220207194946_Initial")]
-    partial class Initial
+    [Migration("20220209203833_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.8")
+                .HasAnnotation("ProductVersion", "3.1.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("SimpleBlog.Models.Category", b =>
