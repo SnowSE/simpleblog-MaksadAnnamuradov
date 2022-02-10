@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -13,9 +12,6 @@ namespace SimpleBlog.Models
     {
         private readonly ApplicationDbContext context;
 
-        //Task<IEnumerable<Post>> IRepository.PostList => throw new NotImplementedException();
-
-        
     public PostgresRepository(ApplicationDbContext context)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
@@ -23,8 +19,6 @@ namespace SimpleBlog.Models
 
         public async Task<IEnumerable<Post>> GetPostListAsync () {
             return await EntityFrameworkQueryableExtensions.ToListAsync(context.Posts);
-
-            //return await context.Posts.ToListAsync();
         }
         public async Task AddPostAsync(Post post)
         {
@@ -42,8 +36,6 @@ namespace SimpleBlog.Models
 
         public async Task<Post> GetPostAsync(int postID)
         {
-            //var postlist = await EntityFrameworkQueryableExtensions.ToListAsync(context.Posts);
-            //return postlist.Find(x=>x.ID.Equals(postID));
             return await context.Posts.Include(r => r.Comments)
                 .Include(p => p.PostCategories) 
                 .ThenInclude(pc => pc.Category)
@@ -109,11 +101,5 @@ namespace SimpleBlog.Models
         {
             return await context.Comments.Include(r => r.ParentPost).FirstOrDefaultAsync(r => r.ID == commentID);
         }
-
-        //public async Task<IEnumerable<Comment>> GetCommentAsync(int PostID)
-        //{
-        //    var commentlist = await EntityFrameworkQueryableExtensions.ToListAsync(context.Comments);
-        //    return (IEnumerable<Comment>)commentlist.Find(x => x.PostID.Equals(PostID));
-        //}
     }
 }

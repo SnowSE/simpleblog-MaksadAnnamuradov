@@ -7,8 +7,6 @@ namespace SimpleBlog.Models
 {
     public interface IRepository
     {
-        //its not a get or set function unless something changes
-        //It is possible 
         public Task<IEnumerable<Post>> GetPostListAsync();
 
         public Task AddPostAsync(Post post);
