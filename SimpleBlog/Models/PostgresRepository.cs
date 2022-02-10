@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+//using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -38,7 +38,6 @@ namespace SimpleBlog.Models
             post.EditedOn = DateTime.Now;
             context.Update(post);
             await context.SaveChangesAsync();
-            //await Task.Run(() => context.Posts. = post);
         }
 
         public async Task<Post> GetPostAsync(int postID)
@@ -65,7 +64,7 @@ namespace SimpleBlog.Models
         public async Task DeleteCommentAsync(Comment comment)
         {
             comment.Deleted = true;
-            comment.DeletedOn = DateTime.Now;
+            comment.DeletedOn = DateTime.Now.ToUniversalTime();
             context.Update(comment);
             await context.SaveChangesAsync();
         }

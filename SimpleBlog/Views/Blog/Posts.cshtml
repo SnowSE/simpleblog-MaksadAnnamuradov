@@ -23,7 +23,7 @@
             {
                 <tr>
 
-                    <td> <a asp-route-ID="@post.ID" asp-action="Detail">@post.Title</a></td>
+                    <td> <a asp-route-id="@post.ID" asp-controller="Blog" asp-action="Detail">@post.Title</a></td>
                     <td>@post.PostedOn</td>
                     <td>@post.EditedOn</td>
                 </tr>
@@ -31,7 +31,7 @@
         </tbody>
     </table>
 
-    <a asp-action="NewPost">Add NewPost</a>
+    <a asp-action="NewPost">New Post</a>
     <a asp-action="Categories">Categories</a>
 
 </body>

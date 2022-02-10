@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
+#nullable disable
+
 namespace SimpleBlog.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +14,9 @@ namespace SimpleBlog.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    CategoryId = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CategoryName = table.Column<string>(nullable: true)
+                    CategoryName = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,12 +27,12 @@ namespace SimpleBlog.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Body = table.Column<string>(nullable: true),
-                    PostedOn = table.Column<DateTime>(nullable: false),
-                    EditedOn = table.Column<DateTime>(nullable: true)
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Body = table.Column<string>(type: "text", nullable: true),
+                    PostedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    EditedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,12 +43,12 @@ namespace SimpleBlog.Migrations
                 name: "Comments",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PostID = table.Column<int>(nullable: false),
-                    Content = table.Column<string>(nullable: true),
-                    DeletedOn = table.Column<DateTime>(nullable: false),
-                    Deleted = table.Column<bool>(nullable: false)
+                    PostID = table.Column<int>(type: "integer", nullable: false),
+                    Content = table.Column<string>(type: "text", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,9 +65,9 @@ namespace SimpleBlog.Migrations
                 name: "PostCategories",
                 columns: table => new
                 {
-                    PostId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
+                    PostId = table.Column<int>(type: "integer", nullable: false),
+                    CategoryId = table.Column<int>(type: "integer", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

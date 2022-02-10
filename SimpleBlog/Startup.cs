@@ -17,6 +17,7 @@ namespace SimpleBlog
     {
         public Startup(IConfiguration configuration)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             Configuration = configuration;
         }
 
@@ -60,16 +61,48 @@ namespace SimpleBlog
                 endpoints.MapRazorPages();
 
                 endpoints.MapControllerRoute(
-                    name: "Default",
-                    pattern: "Blog",
-                    defaults: new { controller = "Blog", action = "Posts" });
+                    name: "default",
+                    pattern: "{controller=Blog}/{action=Posts}/{id?}");
+
+               /* endpoints.MapControllerRoute(
+                   name: "NewPost",
+                   pattern: "blog/newpost",
+                   defaults: new { controller = "Blog", action = "NewPost" });
+
                 endpoints.MapControllerRoute(
-                    name: "blog",
-                    pattern: "Blog/{id?}",
-                    defaults: new { controller = "Blog", action = "Detail" });
+                   name: "Categories",
+                   pattern: "blog/categories",
+                   defaults: new { controller = "Blog", action = "Categories" });*/
+
+               /* endpoints.MapControllerRoute(
+                    name: "Detail",
+                    pattern: "blog/details",
+                    defaults: new { controller = "Blog", action = "Detail/id?" });
                 endpoints.MapControllerRoute(
                     name: "Edit",
-                    pattern: "{controller=Blog}/{action=Posts}/{id?}");
+                    pattern: "blog/edit",
+                    defaults: new { controller = "Blog", action = "Edit/id?" });*/
+
+                /*endpoints.MapControllerRoute(
+                     name: "detail",
+                     pattern: "{controller = Blog}/{action=Detail}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "edit",
+                    pattern: "{controller=Blog}/{action=Posts}/{id?}");*/
+
+                /*endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller = Blog}/{action = Posts}");
+                endpoints.MapControllerRoute(
+                   name: "blog",
+                   pattern: "blog/{*article}",
+                   defaults: new { controller = "Blog", action = "Article" });
+                endpoints.MapControllerRoute(
+                    name: "blog",
+                    pattern: "{controller = Blog}/{action=Detail}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "edit",
+                    pattern: "{controller=Blog}/{action=Posts}/{id?}");*/
 
             });
         }
