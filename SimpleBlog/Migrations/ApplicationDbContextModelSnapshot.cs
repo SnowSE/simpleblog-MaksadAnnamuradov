@@ -53,7 +53,7 @@ namespace SimpleBlog.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("PostID")
                         .HasColumnType("integer");
@@ -77,10 +77,10 @@ namespace SimpleBlog.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("EditedOn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("PostedOn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

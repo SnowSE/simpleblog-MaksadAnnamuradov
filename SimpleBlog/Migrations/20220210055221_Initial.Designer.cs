@@ -12,7 +12,7 @@ using SimpleBlog.Models;
 namespace SimpleBlog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220210051926_Initial")]
+    [Migration("20220210055221_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,7 +55,7 @@ namespace SimpleBlog.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("PostID")
                         .HasColumnType("integer");
@@ -79,10 +79,10 @@ namespace SimpleBlog.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("EditedOn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("PostedOn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

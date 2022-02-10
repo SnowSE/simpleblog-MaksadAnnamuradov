@@ -28,14 +28,14 @@ namespace SimpleBlog.Models
         }
         public async Task AddPostAsync(Post post)
         {
-            post.PostedOn = DateTime.Now;
+            post.PostedOn = DateTime.Now.ToLocalTime();
             context.Posts.Add(post);
             await context.SaveChangesAsync();
         }
 
         public async Task EditPostAsync(Post post)
         {
-            post.EditedOn = DateTime.Now;
+            post.EditedOn = DateTime.Now.ToLocalTime();
             context.Update(post);
             await context.SaveChangesAsync();
         }
